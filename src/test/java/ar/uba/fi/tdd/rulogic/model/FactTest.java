@@ -49,7 +49,6 @@ public class FactTest {
         HashMap<String, String> replacements = new HashMap();
         replacements.put("F", "foo");
         replacements.put("B", "bar");
-        System.out.println("!!!! " + fact.replaceArgs(replacements).toString());
         Assert.assertTrue(fact.replaceArgs(replacements).equals(new Fact("padre(foo, bar)")));
     }
 
