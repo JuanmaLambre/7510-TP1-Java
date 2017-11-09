@@ -11,7 +11,7 @@ public class DrKnowTest {
 
     static String SANE_DB = 
         "padre(roberto, marcos).\n" +
-        "hijo(simon, lalala).\n" +
+        "padre (roberto, maria). \n" +
         "varon(marcos).\n" +
         "hijo(X, Y) :- varon(X), padre(Y, X).\n";
 
@@ -28,6 +28,21 @@ public class DrKnowTest {
 	@Test
 	public void testAskRule() {
         Assert.assertTrue(drknow.ask("hijo(marcos, roberto)"));
+    }
+
+    @Test
+    public void testUnexistantRuleReturnsFalse() {
+        Assert.assertFalse(drknow.ask("noexiste(uno, dos)"));
+    }
+
+    @Test
+    public void testFalseRule() {
+        Assert.assertFalse(drknow.ask("hijo(maria, roberto)"));
+    }
+
+    @Test
+    public void testFact() {
+        Assert.assertTrue(drknow.ask("padre( roberto, maria )"));
     }
 
 }
